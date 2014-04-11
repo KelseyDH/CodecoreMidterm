@@ -34,7 +34,8 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:idea_id] || params[:id])
     @comment = Comment.new
-    @comments = @idea.comments
+    @like = Like.new
+    @comments = @idea.comments.ordered_by_creation
   end
 
 

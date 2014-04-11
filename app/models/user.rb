@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
 
   has_many :ideas
   has_many :comments
-  # has_many :likes
+  
+  has_many :likes, dependent: :destroy
+  has_many :liked_ideas, through: :likes, source: :ideas
 
   def name
     :name

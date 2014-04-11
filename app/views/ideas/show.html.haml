@@ -2,9 +2,19 @@
 %p= @idea.description
 %p= formatted_date(@idea.created_at)
 
+/ Like Button is still breaking...
+/ = form_for [@question, @vote] do |f|
+/   = f.hidden_field :is_up, value: true
+/   = f.submit "Vote Up", class: "btn btn-primary"
+/ %br
+/ = form_for [@question, @vote] do |f|
+/   = f.hidden_field :is_up, value: false
+/   = f.submit "Vote Down", class: "btn btn-primary"
 = form_for @comment, url: idea_comments_path(@idea) do |i|
   = i.text_area :body
   %br
   = i.submit "Submit a comment", class: "btn btn-primary"
 %hr
+%p
+
 = render @comments
