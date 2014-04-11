@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title Ideafactory
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container
+      %nav.nav-main
+        .pull-right
+          - if user_signed_in?
+            Hello
+            = current_user.name
+            = link_to "sign out", destroy_user_session_path, method: :delete, class: "btn btn-default"
+          - else
+            = link_to "sign in", new_user_session_path, class: "btn btn-default"
+      - if flash[:notice] 
+        .alert.alert-success= flash[:notice]
+      - elsif flash[:error]
+        .alert.alert-danger= flash[:error]
+      = yield
+

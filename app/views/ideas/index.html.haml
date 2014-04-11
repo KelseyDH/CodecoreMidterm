@@ -1,0 +1,12 @@
+<h3>Have a good idea?  Let's hear about it...</h3>
+= button_to "Add an Idea", new_idea_path, class: "btn btn-success", method: :get
+<hr>
+<p>listing ideas...</p>
+
+- @ideas.each do |idea|
+  %h2= link_to idea.title, idea_path(idea)
+  %p.description= idea.description
+  %p
+    Created On: #{formatted_date(idea.created_at)}
+  %p= button_to "Like", "#", class: "btn btn-success" ##UPDATE
+  = button_to "Join", "#", class: "btn btn-default" ##UPDATE

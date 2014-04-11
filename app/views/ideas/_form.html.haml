@@ -1,0 +1,9 @@
+= form_for @idea do |i|
+  = i.label :title, "idea title"
+  = i.text_field :title
+  %br/
+  = i.label :description, "idea description"
+  = i.text_area :description
+  %br/
+
+  = i.submit button_label, class: "btn btn-default"
